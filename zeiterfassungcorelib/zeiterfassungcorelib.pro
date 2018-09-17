@@ -9,7 +9,7 @@ PROJECT_ROOT = ../..
 
 DEFINES += ZEITERFASSUNGCORELIB_LIBRARY
 
-SOURCES += timeutils.cpp \
+SOURCES += \
            zeiterfassungapi.cpp \
            zeiterfassungsettings.cpp \
            replies/createbookingreply.cpp \
@@ -31,7 +31,6 @@ SOURCES += timeutils.cpp \
            replies/zeiterfassungreply.cpp
 
 HEADERS += cpp14polyfills.h \
-           timeutils.h \
            zeiterfassungapi.h \
            zeiterfassungcorelib_global.h \
            zeiterfassungsettings.h \

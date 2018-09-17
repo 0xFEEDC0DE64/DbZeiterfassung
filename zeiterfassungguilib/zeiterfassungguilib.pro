@@ -1,6 +1,6 @@
 QT += core network gui widgets uitools
 
-DBLIBS += zeiterfassungcore
+DBLIBS += dbcore zeiterfassungcore
 
 TARGET = zeiterfassunggui
 

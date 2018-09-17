@@ -10,7 +10,7 @@
 
 #include "mainwindow.h"
 #include "zeiterfassungapi.h"
-#include "timeutils.h"
+#include "utils/timeutils.h"
 #include "stripfactory.h"
 
 StripsWidget::StripsWidget(MainWindow &mainWindow, QWidget *parent) :

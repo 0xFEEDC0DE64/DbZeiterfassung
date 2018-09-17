@@ -17,7 +17,7 @@
 #include <QDebug>
 
 #include "zeiterfassungapi.h"
-#include "timeutils.h"
+#include "utils/timeutils.h"
 #include "zeiterfassungsettings.h"
 #include "stripfactory.h"
 #include "stripswidget.h"
