@@ -1,0 +1,33 @@
+[submodule "plugins/absenceplugin"]
+	path = plugins/absenceplugin
+	url = https://github.com/0xFEEDC0DE64/DbZeiterfassung-absenceplugin.git
+[submodule "plugins/advancedviewplugin"]
+	path = plugins/advancedviewplugin
+	url = https://github.com/0xFEEDC0DE64/DbZeiterfassung-advancedviewplugin.git
+[submodule "plugins/devtoolsplugin"]
+	path = plugins/devtoolsplugin
+	url = https://github.com/0xFEEDC0DE64/DbZeiterfassung-devtoolsplugin.git
+[submodule "plugins/lunchmealplugin"]
+	path = plugins/lunchmealplugin
+	url = https://github.com/0xFEEDC0DE64/DbZeiterfassung-lunchmealplugin.git
+[submodule "plugins/presenceplugin"]
+	path = plugins/presenceplugin
+	url = https://github.com/0xFEEDC0DE64/DbZeiterfassung-presenceplugin.git
+[submodule "plugins/profileplugin"]
+	path = plugins/profileplugin
+	url = https://github.com/0xFEEDC0DE64/DbZeiterfassung-profileplugin.git
+[submodule "plugins/reportsplugin"]
+	path = plugins/reportsplugin
+	url = https://github.com/0xFEEDC0DE64/DbZeiterfassung-reportsplugin.git
+[submodule "plugins/sketchplugin"]
+	path = plugins/sketchplugin
+	url = https://github.com/0xFEEDC0DE64/DbZeiterfassung-sketchplugin.git
+[submodule "plugins/updaterplugin"]
+	path = plugins/updaterplugin
+	url = https://github.com/0xFEEDC0DE64/DbZeiterfassung-updaterplugin.git
+[submodule "plugins/weatherplugin"]
+	path = plugins/weatherplugin
+	url = https://github.com/0xFEEDC0DE64/DbZeiterfassung-weatherplugin.git
+[submodule "plugins/webradioplugin"]
+	path = plugins/webradioplugin
+	url = https://github.com/0xFEEDC0DE64/DbZeiterfassung-webradioplugin.git
