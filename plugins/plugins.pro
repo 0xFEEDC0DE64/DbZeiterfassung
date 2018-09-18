@@ -9,7 +9,8 @@ SUBDIRS += absenceplugin \
            reportsplugin \
            sketchplugin \
            updaterplugin \
-           weatherplugin \
-           webradioplugin
+           weatherplugin
+qtHaveModule(multimedia): SUBDIRS += webradioplugin
+else: message("multimedia is missing, will not build webradioplugin")
 
 OTHER_FILES += plugin.pri
