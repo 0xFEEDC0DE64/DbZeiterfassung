@@ -3,10 +3,14 @@ DbZeiterfassung git module for use in DbSoftware (https://github.com/0xFEEDC0DE6
 
 # Building from source
 ```Shell
-git clone --recursive https://github.com/0xFEEDC0DE64/DbSoftware.git
+git clone https://github.com/0xFEEDC0DE64/DbSoftware.git
+cd DbSoftware
+git submodule update --init --recursive 3rdparty/Quazip DbSketch DbZeiterfassung libs/DbCoreLib libs/DbGuiLib libs/DbNetworkLib
+cd ..
 mkdir build_DbSoftware
 cd build_DbSoftware
 qmake CONFIG+=ccache ../DbSoftware
-make -j$(nproc) sub-DbZeiterfassung sub-DbZeiterfassung-install_subtargets
+make -j$(nproc) sub-DbZeiterfassung
+make sub-DbZeiterfassung-install_subtargets
 ./bin/zeiterfassung
 ```
