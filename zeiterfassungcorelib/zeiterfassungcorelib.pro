@@ -1,7 +1,7 @@
 QT += core network
 QT -= gui widgets
 
-DBLIBS +=
+DBLIBS += dbcore
 
 TARGET = zeiterfassungcore
 
