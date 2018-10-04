@@ -30,8 +30,7 @@ SOURCES += \
            replies/updatetimeassignmentreply.cpp \
            replies/zeiterfassungreply.cpp
 
-HEADERS += cpp14polyfills.h \
-           zeiterfassungapi.h \
+HEADERS += zeiterfassungapi.h \
            zeiterfassungcorelib_global.h \
            zeiterfassungsettings.h \
            replies/createbookingreply.h \
