@@ -1,0 +1,4 @@
+add_subdirectory(plugins)
+add_subdirectory(zeiterfassung)
+add_subdirectory(zeiterfassungcorelib)
+add_subdirectory(zeiterfassungguilib)
