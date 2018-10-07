@@ -1,7 +1,9 @@
 # DbZeiterfassung
-DbZeiterfassung git module for use in DbSoftware (https://github.com/0xFEEDC0DE64/DbSoftware)
+Time tracking tool for work with plugin support
 
-# Building from source
+## Building from source
+This project can only be built as part of the project structure [DbSoftware](https://github.com/0xFEEDC0DE64/DbSoftware)
+
 ```Shell
 git clone https://github.com/0xFEEDC0DE64/DbSoftware.git
 cd DbSoftware
