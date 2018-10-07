@@ -7,12 +7,12 @@
 #include <QNetworkReply>
 #include <QVector>
 
-#include "zeiterfassungcorelib_global.h"
+#include "zeiterfassungnetworklib_global.h"
 #include "zeiterfassungreply.h"
 
 class ZeiterfassungApi;
 
-class ZEITERFASSUNGCORELIB_EXPORT GetAbsencesReply : public ZeiterfassungReply
+class ZEITERFASSUNGNETWORKLIB_EXPORT GetAbsencesReply : public ZeiterfassungReply
 {
     Q_OBJECT
 

@@ -2,13 +2,13 @@
 
 #include <QObject>
 
-#include "zeiterfassungcorelib_global.h"
+#include "zeiterfassungnetworklib_global.h"
 
 class QJsonValue;
 
 class ZeiterfassungApi;
 
-class ZEITERFASSUNGCORELIB_EXPORT ZeiterfassungReply : public QObject
+class ZEITERFASSUNGNETWORKLIB_EXPORT ZeiterfassungReply : public QObject
 {
     Q_OBJECT
 

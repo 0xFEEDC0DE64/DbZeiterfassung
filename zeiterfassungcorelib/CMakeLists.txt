@@ -1,52 +1,16 @@
 set(HEADERS
-    zeiterfassungapi.h
     zeiterfassungcorelib_global.h
     zeiterfassungsettings.h
-    replies/createbookingreply.h
-    replies/createtimeassignmentreply.h
-    replies/deletebookingreply.h
-    replies/deletetimeassignmentreply.h
-    replies/getabsencesreply.h
-    replies/getbookingsreply.h
-    replies/getdayinforeply.h
-    replies/getpresencestatusreply.h
-    replies/getprojectsreply.h
-    replies/getreportreply.h
-    replies/gettimeassignmentsreply.h
-    replies/getuserinforeply.h
-    replies/loginpagereply.h
-    replies/loginreply.h
-    replies/updatebookingreply.h
-    replies/updatetimeassignmentreply.h
-    replies/zeiterfassungreply.h
 )
 
 set(SOURCES
-    zeiterfassungapi.cpp
     zeiterfassungsettings.cpp
-    replies/createbookingreply.cpp
-    replies/createtimeassignmentreply.cpp
-    replies/deletebookingreply.cpp
-    replies/deletetimeassignmentreply.cpp
-    replies/getabsencesreply.cpp
-    replies/getbookingsreply.cpp
-    replies/getdayinforeply.cpp
-    replies/getpresencestatusreply.cpp
-    replies/getprojectsreply.cpp
-    replies/getreportreply.cpp
-    replies/gettimeassignmentsreply.cpp
-    replies/getuserinforeply.cpp
-    replies/loginpagereply.cpp
-    replies/loginreply.cpp
-    replies/updatebookingreply.cpp
-    replies/updatetimeassignmentreply.cpp
-    replies/zeiterfassungreply.cpp
 )
 
 add_library(zeiterfassungcorelib SHARED ${HEADERS} ${SOURCES})
 
 target_compile_definitions(zeiterfassungcorelib PRIVATE ZEITERFASSUNGCORELIB_LIBRARY)
 
-target_link_libraries(zeiterfassungcorelib Qt5::Core Qt5::Network dbcorelib)
+target_link_libraries(zeiterfassungcorelib Qt5::Core dbcorelib)
 
 target_include_directories(zeiterfassungcorelib PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})

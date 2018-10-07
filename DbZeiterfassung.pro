@@ -3,8 +3,9 @@ TEMPLATE = subdirs
 SUBDIRS += plugins \
            zeiterfassung \
            zeiterfassungcorelib \
-           zeiterfassungguilib
+           zeiterfassungguilib \
+           zeiterfassungnetworklib
 
-plugins.depends += zeiterfassungcorelib zeiterfassungguilib
-zeiterfassung.depends += zeiterfassungcorelib zeiterfassungguilib
-zeiterfassungguilib.depends += zeiterfassungcorelib
+plugins.depends += zeiterfassungcorelib zeiterfassungguilib zeiterfassungnetworklib
+zeiterfassung.depends += zeiterfassungcorelib zeiterfassungguilib zeiterfassungnetworklib
+zeiterfassungguilib.depends += zeiterfassungcorelib zeiterfassungnetworklib

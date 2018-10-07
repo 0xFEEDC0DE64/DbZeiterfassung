@@ -1,6 +1,6 @@
 QT += core network gui widgets
 
-DBLIBS += zeiterfassungcore zeiterfassunggui
+DBLIBS += zeiterfassungcore zeiterfassunggui zeiterfassungnetwork
 
 TARGET = zeiterfassung
 

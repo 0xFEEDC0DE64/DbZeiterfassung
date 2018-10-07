@@ -5,12 +5,12 @@
 #include <QNetworkReply>
 #include <QVector>
 
-#include "zeiterfassungcorelib_global.h"
+#include "zeiterfassungnetworklib_global.h"
 #include "zeiterfassungreply.h"
 
 class ZeiterfassungApi;
 
-class ZEITERFASSUNGCORELIB_EXPORT GetProjectsReply : public ZeiterfassungReply
+class ZEITERFASSUNGNETWORKLIB_EXPORT GetProjectsReply : public ZeiterfassungReply
 {
     Q_OBJECT
 

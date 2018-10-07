@@ -34,6 +34,6 @@ add_library(zeiterfassungguilib SHARED ${HEADERS} ${SOURCES} ${FORMS})
 
 target_compile_definitions(zeiterfassungguilib PRIVATE ZEITERFASSUNGGUILIB_LIBRARY)
 
-target_link_libraries(zeiterfassungguilib Qt5::Core Qt5::Gui Qt5::Widgets Qt5::UiTools zeiterfassungcorelib)
+target_link_libraries(zeiterfassungguilib Qt5::Core Qt5::Gui Qt5::Widgets Qt5::UiTools zeiterfassungcorelib zeiterfassungnetworklib)
 
 target_include_directories(zeiterfassungguilib PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})

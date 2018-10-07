@@ -5,10 +5,10 @@
 #include <QNetworkReply>
 #include <QByteArray>
 
-#include "zeiterfassungcorelib_global.h"
+#include "zeiterfassungnetworklib_global.h"
 #include "zeiterfassungreply.h"
 
-class ZEITERFASSUNGCORELIB_EXPORT GetReportReply : public ZeiterfassungReply
+class ZEITERFASSUNGNETWORKLIB_EXPORT GetReportReply : public ZeiterfassungReply
 {
     Q_OBJECT
 
