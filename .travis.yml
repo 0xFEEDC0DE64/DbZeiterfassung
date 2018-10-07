@@ -1,0 +1,36 @@
+language: cpp
+os: linux
+sudo: false
+dist: trusty
+compiler:
+  - gcc
+  - clang
+
+cache:
+  directories:
+    - ~/.ccache
+    - ../qt5
+
+install:
+  - mkdir -p ../qt5
+  - if [ ! -d ../qt5/.git ] ; then rm ../qt5 -Rf ; git clone --branch=5.10 git://code.qt.io/qt/qt5.git ../qt5 ; fi
+  - pushd ../qt5
+  - if [ ! -d qtbase/.git ] ; then perl init-repository --module-subset=qtbase,qtimageformats,qtmultimedia,qtserialport,qttools ; fi
+  - if [ ! -f config.summary ] ; then ./configure -prefix `pwd`/build -opensource -confirm-license -nomake examples -nomake tests ; fi
+  - if [ ! -d build ] ; then make -j2 > /dev/null && make install ; fi
+  - popd
+
+script:
+  - ccache -s
+  - git clone https://github.com/0xFEEDC0DE64/DbSoftware.git ../DbSoftware
+  - pushd ../DbSoftware
+  - git submodule update --init 3rdparty/Quazip DbSketch libs/DbCoreLib libs/DbGuiLib libs/DbNetworkLib
+  - popd
+  - shopt -s dotglob
+  - mv * ../DbSoftware/DbZeiterfassung -v
+  - mkdir -p ../build_DbSoftware
+  - pushd ../build_DbSoftware
+  - ../qt5/build/bin/qmake CONFIG+=ccache ../DbSoftware -config release
+  - make -j2 sub-DbZeiterfassung
+  - make sub-DbZeiterfassung-install_subtargets
+  - popd
