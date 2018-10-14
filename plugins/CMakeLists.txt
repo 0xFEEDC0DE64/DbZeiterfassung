@@ -1,4 +1,4 @@
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin/plugins/zeiterfassung)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/plugins/zeiterfassung)
 
 add_custom_target(zeiterfassung-plugins)
 add_dependencies(zeiterfassung zeiterfassung-plugins)
