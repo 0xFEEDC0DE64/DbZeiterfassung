@@ -17,6 +17,8 @@
 #include <QPluginLoader>
 #include <QDebug>
 
+#include "utils/fileutils.h"
+
 #include "zeiterfassungsettings.h"
 #include "dialogs/languageselectiondialog.h"
 #include "zeiterfassungapi.h"
@@ -39,9 +41,7 @@ QSet<ZeiterfassungPlugin*> plugins;
 
 bool loadAndInstallTranslator(QTranslator &translator, const QString &filename)
 {
-    static auto dir = QDir(QCoreApplication::applicationDirPath()).absoluteFilePath(QStringLiteral("translations"));
-
-    if(!translator.load(QLocale(), filename, QStringLiteral("_"), dir))
+    if(!translator.load(QLocale(), filename, QStringLiteral("_"), translationsDir()))
     {
         qWarning() << "could not load translation" << filename;
         return false;
