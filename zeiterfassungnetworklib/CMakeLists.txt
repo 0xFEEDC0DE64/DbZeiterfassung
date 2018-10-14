@@ -48,3 +48,5 @@ target_compile_definitions(zeiterfassungnetworklib PRIVATE ZEITERFASSUNGNETWORKL
 target_link_libraries(zeiterfassungnetworklib Qt5::Core Qt5::Network dbcorelib)
 
 target_include_directories(zeiterfassungnetworklib PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+
+add_dependencies(zeiterfassung zeiterfassungnetworklib)

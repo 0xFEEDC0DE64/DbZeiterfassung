@@ -23,6 +23,10 @@ set(SOURCES
     dialogs/settingsdialog.cpp
 )
 
+set(RESOURCES
+    zeiterfassungguilib_resources.qrc
+)
+
 set(FORMS
     mainwindow.ui
     dialogs/authenticationdialog.ui
@@ -30,10 +34,12 @@ set(FORMS
     dialogs/settingsdialog.ui
 )
 
-add_library(zeiterfassungguilib SHARED ${HEADERS} ${SOURCES} ${FORMS})
+add_library(zeiterfassungguilib SHARED ${HEADERS} ${SOURCES} ${RESOURCES} ${FORMS})
 
 target_compile_definitions(zeiterfassungguilib PRIVATE ZEITERFASSUNGGUILIB_LIBRARY)
 
 target_link_libraries(zeiterfassungguilib Qt5::Core Qt5::Gui Qt5::Widgets Qt5::UiTools zeiterfassungcorelib zeiterfassungnetworklib)
 
 target_include_directories(zeiterfassungguilib PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+
+add_dependencies(zeiterfassung zeiterfassungguilib)

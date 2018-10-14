@@ -1,7 +1,7 @@
 TEMPLATE = subdirs
 
 SUBDIRS += plugins \
-           zeiterfassung \
+           zeiterfassungclient \
            zeiterfassungcorelib \
            zeiterfassungguilib \
            zeiterfassungnetworklib

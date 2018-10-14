@@ -1,11 +1,14 @@
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin/plugins/zeiterfassung)
 
+add_custom_target(zeiterfassung-plugins)
+add_dependencies(zeiterfassung zeiterfassung-plugins)
+
 add_subdirectory(absenceplugin)
 add_subdirectory(advancedviewplugin)
 add_subdirectory(devtoolsplugin)
 add_subdirectory(lunchmealplugin)
-add_subdirectory(profileplugin)
 add_subdirectory(presenceplugin)
+add_subdirectory(profileplugin)
 add_subdirectory(reportsplugin)
 add_subdirectory(sketchplugin)
 add_subdirectory(updaterplugin)
