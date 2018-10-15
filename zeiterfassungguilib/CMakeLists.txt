@@ -23,10 +23,6 @@ set(SOURCES
     dialogs/settingsdialog.cpp
 )
 
-set(RESOURCES
-    zeiterfassungguilib_resources.qrc
-)
-
 set(FORMS
     mainwindow.ui
     dialogs/authenticationdialog.ui
@@ -34,7 +30,20 @@ set(FORMS
     dialogs/settingsdialog.ui
 )
 
-add_library(zeiterfassungguilib SHARED ${HEADERS} ${SOURCES} ${RESOURCES} ${FORMS})
+set(RESOURCES
+    zeiterfassungguilib_resources.qrc
+)
+
+set(TRANSLATIONS
+    translations/zeiterfassungguilib_en.ts
+    translations/zeiterfassungguilib_de.ts
+)
+
+set_source_files_properties(${TRANSLATIONS} PROPERTIES OUTPUT_LOCATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/translations)
+QT5_CREATE_TRANSLATION(TRANSLATIONS_C ${TRANSLATIONS} ${HEADERS} ${SOURCES} ${FORMS} OPTIONS -no-obsolete)
+#QT5_ADD_TRANSLATION(TRANSLATIONS_C ${TRANSLATIONS})
+
+add_library(zeiterfassungguilib SHARED ${HEADERS} ${SOURCES} ${FORMS} ${RESOURCES} ${TRANSLATIONS_C})
 
 target_compile_definitions(zeiterfassungguilib PRIVATE ZEITERFASSUNGGUILIB_LIBRARY)
 

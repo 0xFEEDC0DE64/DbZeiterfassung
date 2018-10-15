@@ -7,7 +7,16 @@ set(SOURCES
     zeiterfassungsettings.cpp
 )
 
-add_library(zeiterfassungcorelib SHARED ${HEADERS} ${SOURCES})
+set(TRANSLATIONS
+    translations/zeiterfassungcorelib_en.ts
+    translations/zeiterfassungcorelib_de.ts
+)
+
+set_source_files_properties(${TRANSLATIONS} PROPERTIES OUTPUT_LOCATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/translations)
+QT5_CREATE_TRANSLATION(TRANSLATIONS_C ${TRANSLATIONS} ${HEADERS} ${SOURCES} OPTIONS -no-obsolete)
+#QT5_ADD_TRANSLATION(TRANSLATIONS_C ${TRANSLATIONS})
+
+add_library(zeiterfassungcorelib SHARED ${HEADERS} ${SOURCES} ${TRANSLATIONS_C})
 
 target_compile_definitions(zeiterfassungcorelib PRIVATE ZEITERFASSUNGCORELIB_LIBRARY)
 
