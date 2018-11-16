@@ -31,3 +31,6 @@
 [submodule "plugins/webradioplugin"]
 	path = plugins/webradioplugin
 	url = https://github.com/0xFEEDC0DE64/DbZeiterfassung-webradioplugin.git
+[submodule "plugins/exportplugin"]
+	path = plugins/exportplugin
+	url = https://github.com/0xFEEDC0DE64/DbZeiterfassung-exportplugin.git
