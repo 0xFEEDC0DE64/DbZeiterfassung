@@ -1,3 +1,7 @@
+find_package(Qt5Core CONFIG REQUIRED)
+find_package(Qt5Network CONFIG REQUIRED)
+find_package(Qt5LinguistTools CONFIG REQUIRED)
+
 set(HEADERS
     zeiterfassungapi.h
     zeiterfassungnetworklib_global.h

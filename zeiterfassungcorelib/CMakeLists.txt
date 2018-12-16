@@ -1,3 +1,6 @@
+find_package(Qt5Core CONFIG REQUIRED)
+find_package(Qt5LinguistTools CONFIG REQUIRED)
+
 set(HEADERS
     zeiterfassungcorelib_global.h
     zeiterfassungsettings.h
