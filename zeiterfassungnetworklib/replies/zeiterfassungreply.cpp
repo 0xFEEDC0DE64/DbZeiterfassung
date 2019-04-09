@@ -8,9 +8,15 @@
 ZeiterfassungReply::ZeiterfassungReply(ZeiterfassungApi *zeiterfassung) :
     QObject(zeiterfassung),
     m_zeiterfassung(zeiterfassung),
+    m_finished(false),
     m_success(false)
 {
+    connect(this, &ZeiterfassungReply::finished, this, [this](){ m_finished = true; });
+}
 
+bool ZeiterfassungReply::isFinished() const
+{
+    return m_finished;
 }
 
 bool ZeiterfassungReply::success() const

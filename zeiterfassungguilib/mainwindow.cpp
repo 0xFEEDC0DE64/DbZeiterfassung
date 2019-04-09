@@ -37,7 +37,8 @@ MainWindow::MainWindow(ZeiterfassungSettings &settings, ZeiterfassungApi &erfass
     m_stripFactory(stripFactory),
     m_plugins(plugins),
     m_currentStripWidget(Q_NULLPTR),
-    m_timerId(-1)
+    m_timerId(-1),
+    m_projectsModel(m_userInfo.userId, QDate::currentDate(), m_erfassung)
 {
     ui->setupUi(this);
 
@@ -96,6 +97,8 @@ MainWindow::MainWindow(ZeiterfassungSettings &settings, ZeiterfassungApi &erfass
     }
 
     dateChangedSlot(ui->dateEditDate->date());
+
+    ui->comboBoxDebug->setModel(&m_projectsModel);
 }
 
 MainWindow::~MainWindow()

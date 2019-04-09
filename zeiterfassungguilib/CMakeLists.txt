@@ -6,6 +6,7 @@ find_package(Qt5LinguistTools CONFIG REQUIRED)
 
 set(HEADERS
     mainwindow.h
+    projectsmodel.h
     settingswidget.h
     stripfactory.h
     stripswidget.h
@@ -19,6 +20,7 @@ set(HEADERS
 
 set(SOURCES
     mainwindow.cpp
+    projectsmodel.cpp
     settingswidget.cpp
     stripfactory.cpp
     stripswidget.cpp

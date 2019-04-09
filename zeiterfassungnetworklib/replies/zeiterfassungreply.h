@@ -15,6 +15,8 @@ class ZEITERFASSUNGNETWORKLIB_EXPORT ZeiterfassungReply : public QObject
 public:
     explicit ZeiterfassungReply(ZeiterfassungApi *zeiterfassung);
 
+    bool isFinished() const;
+
     bool success() const;
     const QString &message() const;
 
@@ -33,6 +35,7 @@ protected:
 
 private:
     ZeiterfassungApi *m_zeiterfassung;
+    bool m_finished;
     bool m_success;
     QString m_message;
 };

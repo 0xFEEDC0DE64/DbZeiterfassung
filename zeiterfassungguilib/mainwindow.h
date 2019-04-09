@@ -10,6 +10,7 @@
 #include "replies/getuserinforeply.h"
 #include "replies/getcomboboxreply.h"
 #include "replies/getpresencestatusreply.h"
+#include "projectsmodel.h"
 
 class QMenu;
 class QToolBar;
@@ -85,4 +86,6 @@ private:
     StripsWidget *m_currentStripWidget;
 
     int m_timerId;
+
+    ProjectsModel m_projectsModel;
 };
