@@ -12,7 +12,7 @@ const QString ZeiterfassungSettings::m_workpackages("workpackages");
 const QString ZeiterfassungSettings::m_texts("texte");
 const QString ZeiterfassungSettings::m_theme("theme");
 const QLocale::Language ZeiterfassungSettings::m_defaultLanguage(QLocale::AnyLanguage);
-const QUrl ZeiterfassungSettings::m_defaultUrl(QStringLiteral("http://10.1.0.11:8080/evoApps/"));
+const QUrl ZeiterfassungSettings::m_defaultUrl(QStringLiteral("http://timetool.avibit.com:8080/evoApps/"));
 
 ZeiterfassungSettings::ZeiterfassungSettings(const QString &organization,
                                              const QString &application, QObject *parent) :
