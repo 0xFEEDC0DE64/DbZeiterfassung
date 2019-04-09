@@ -442,8 +442,6 @@ void MainWindow::updateComboboxes()
         auto workpackages = m_settings.workpackages();
         for(const auto &workpackage : workpackages)
             ui->comboBoxWorkpackage->addItem(workpackage);
-        if(workpackages.count())
-            ui->comboBoxWorkpackage->setCurrentText(QString());
     }
 
     ui->comboBoxText->clear();
