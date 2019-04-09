@@ -59,14 +59,13 @@ void GetTimeAssignmentsReply::requestFinished()
             auto koWertList = obj.value(QStringLiteral("koWertList")).toArray();
 
             m_timeAssignments.append({
-                 obj.value(QStringLiteral("bookingNr")).toInt(),
-                 parseDate(obj.value(QStringLiteral("bookingDate"))),
-                 parseTime(obj.value(QStringLiteral("bookingTime"))),
-                 parseTime(obj.value(QStringLiteral("bookingTimespan"))),
-                 obj.value(QStringLiteral("text")).toString(),
-                 koWertList.at(0).toObject().value(QStringLiteral("value")).toString(),
-                 koWertList.at(1).toObject().value(QStringLiteral("value")).toString(),
-                 koWertList.at(2).toObject().value(QStringLiteral("value")).toString()
+                 .id = obj.value(QStringLiteral("bookingNr")).toInt(),
+                 .date = parseDate(obj.value(QStringLiteral("bookingDate"))),
+                 .time = parseTime(obj.value(QStringLiteral("bookingTime"))),
+                 .timespan = parseTime(obj.value(QStringLiteral("bookingTimespan"))),
+                 .text = obj.value(QStringLiteral("text")).toString(),
+                 .project = koWertList.at(0).toObject().value(QStringLiteral("value")).toString(),
+                 .workpackage = koWertList.at(1).toObject().value(QStringLiteral("value")).toString()
             });
         }
     }

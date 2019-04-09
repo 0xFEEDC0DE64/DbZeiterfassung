@@ -77,74 +77,74 @@
         <translation>Jetzt</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="171"/>
-        <location filename="../mainwindow.cpp" line="400"/>
-        <location filename="../mainwindow.cpp" line="411"/>
+        <location filename="../mainwindow.ui" line="155"/>
+        <location filename="../mainwindow.cpp" line="396"/>
+        <location filename="../mainwindow.cpp" line="407"/>
         <source>Start</source>
         <translation>Kommen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="191"/>
+        <location filename="../mainwindow.ui" line="175"/>
         <source>End</source>
         <translation>Gehen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="234"/>
+        <location filename="../mainwindow.ui" line="218"/>
         <source>&amp;File</source>
         <translation>&amp;Datei</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="240"/>
+        <location filename="../mainwindow.ui" line="224"/>
         <source>&amp;About</source>
         <translation>&amp;Über</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="250"/>
+        <location filename="../mainwindow.ui" line="234"/>
         <source>&amp;View</source>
         <translation>&amp;Ansicht</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="257"/>
+        <location filename="../mainwindow.ui" line="241"/>
         <source>&amp;Tools</source>
         <translation>&amp;Werkzeuge</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="282"/>
+        <location filename="../mainwindow.ui" line="266"/>
         <source>&amp;Quit</source>
         <translation>&amp;Beenden</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="291"/>
+        <location filename="../mainwindow.ui" line="275"/>
         <source>About &amp;Me</source>
         <translation>Über &amp;mich</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="300"/>
+        <location filename="../mainwindow.ui" line="284"/>
         <source>About &amp;zeiterfassung</source>
         <translation>Über &amp;zeiterfassung</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="309"/>
+        <location filename="../mainwindow.ui" line="293"/>
         <source>About &amp;Qt</source>
         <translation>Über &amp;Qt</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="318"/>
+        <location filename="../mainwindow.ui" line="302"/>
         <source>&amp;Today</source>
         <translation>&amp;Heute</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="327"/>
+        <location filename="../mainwindow.ui" line="311"/>
         <source>&amp;Refresh everything</source>
         <translation>Alles &amp;neu laden</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="336"/>
+        <location filename="../mainwindow.ui" line="320"/>
         <source>&amp;Settings</source>
         <translation>&amp;Einstellungen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="345"/>
+        <location filename="../mainwindow.ui" line="329"/>
         <source>Help</source>
         <translation>Hilfe</translation>
     </message>
@@ -155,51 +155,46 @@
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="81"/>
-        <source>Subproject</source>
-        <translation>Subprojekt</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="82"/>
         <source>Workpackage</source>
         <translation>Arbeitspaket</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="83"/>
+        <location filename="../mainwindow.cpp" line="82"/>
         <source>Text</source>
         <translation>Text</translation>
     </message>
     <message>
+        <location filename="../mainwindow.cpp" line="194"/>
         <location filename="../mainwindow.cpp" line="195"/>
-        <location filename="../mainwindow.cpp" line="196"/>
         <source>Could not load bookings!</source>
         <translation>Konnte Buchungen nicht laden!</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="226"/>
-        <location filename="../mainwindow.cpp" line="330"/>
+        <location filename="../mainwindow.cpp" line="225"/>
+        <location filename="../mainwindow.cpp" line="327"/>
         <source>Could not create booking!</source>
         <translation>Konnte Buchung nicht erstellen!</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="253"/>
-        <location filename="../mainwindow.cpp" line="315"/>
+        <location filename="../mainwindow.cpp" line="251"/>
+        <location filename="../mainwindow.cpp" line="312"/>
         <source>Could not edit time assignment!</source>
         <translation>Konnte Kontierung nicht bearbeiten!</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="430"/>
-        <location filename="../mainwindow.cpp" line="439"/>
+        <location filename="../mainwindow.cpp" line="426"/>
+        <location filename="../mainwindow.cpp" line="435"/>
         <source>%0 (%1)</source>
         <translation>%0 (%1)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="270"/>
+        <location filename="../mainwindow.cpp" line="269"/>
         <source>Could not create time assignment!</source>
         <translation>Konnte Kontierung nicht erstellen!</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="400"/>
-        <location filename="../mainwindow.cpp" line="411"/>
+        <location filename="../mainwindow.cpp" line="396"/>
+        <location filename="../mainwindow.cpp" line="407"/>
         <source>Switch</source>
         <translation>Wechseln</translation>
     </message>

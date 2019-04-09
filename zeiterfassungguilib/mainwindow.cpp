@@ -78,7 +78,6 @@ MainWindow::MainWindow(ZeiterfassungSettings &settings, ZeiterfassungApi &erfass
     m_getProjectsReply = erfassung.doGetProjects(userInfo.userId, QDate::currentDate());
     connect(m_getProjectsReply.get(), &ZeiterfassungReply::finished, this, &MainWindow::getProjectsFinished);
 
-    ui->comboBoxSubproject->lineEdit()->setPlaceholderText(tr("Subproject"));
     ui->comboBoxWorkpackage->lineEdit()->setPlaceholderText(tr("Workpackage"));
     ui->comboBoxText->lineEdit()->setPlaceholderText(tr("Text"));
 
@@ -241,8 +240,7 @@ void MainWindow::pushButtonStartPressed()
 
                 auto reply = m_erfassung.doUpdateTimeAssignment(timeAssignment.id, m_userInfo.userId, timeAssignment.date,
                                                                 timeAssignment.time, timespan,
-                                                                timeAssignment.project, timeAssignment.subproject,
-                                                                timeAssignment.workpackage, timeAssignment.text);
+                                                                timeAssignment.project, timeAssignment.workpackage, timeAssignment.text);
 
                 reply->waitForFinished();
 
@@ -260,8 +258,9 @@ void MainWindow::pushButtonStartPressed()
         {
             auto reply = m_erfassung.doCreateTimeAssignment(m_userInfo.userId, ui->dateEditDate->date(),
                                                             timeAssignmentTime, QTime(0, 0),
-                                                            ui->comboBoxProject->currentData().toString(), ui->comboBoxSubproject->currentText(),
-                                                            ui->comboBoxWorkpackage->currentText(), ui->comboBoxText->currentText());
+                                                            ui->comboBoxProject->currentData().toString(),
+                                                            ui->comboBoxWorkpackage->currentText(),
+                                                            ui->comboBoxText->currentText());
 
             reply->waitForFinished();
 
@@ -275,7 +274,6 @@ void MainWindow::pushButtonStartPressed()
     }
 
     m_settings.prependProject(ui->comboBoxProject->currentData().toString());
-    m_settings.prependSubproject(ui->comboBoxSubproject->currentText());
     m_settings.prependWorkpackage(ui->comboBoxWorkpackage->currentText());
     m_settings.prependText(ui->comboBoxText->currentText());
 
@@ -305,8 +303,7 @@ void MainWindow::pushButtonEndPressed()
 
         auto reply = m_erfassung.doUpdateTimeAssignment(timeAssignment.id, m_userInfo.userId, timeAssignment.date,
                                                         timeAssignment.time, timespan,
-                                                        timeAssignment.project, timeAssignment.subproject,
-                                                        timeAssignment.workpackage, timeAssignment.text);
+                                                        timeAssignment.project, timeAssignment.workpackage, timeAssignment.text);
 
         reply->waitForFinished();
 
@@ -392,7 +389,6 @@ void MainWindow::startEnabledChanged()
     ui->pushButtonNow->setEnabled(startEnabled || endEnabled);
 
     ui->comboBoxProject->setEnabled(startEnabled);
-    ui->comboBoxSubproject->setEnabled(startEnabled);
     ui->comboBoxWorkpackage->setEnabled(startEnabled);
     ui->comboBoxText->setEnabled(startEnabled);
 
@@ -438,16 +434,6 @@ void MainWindow::updateComboboxes()
             if(!preferedProjects.contains(iter.key()))
                 ui->comboBoxProject->addItem(tr("%0 (%1)").arg(iter.value()).arg(iter.key()), iter.key());
         }
-    }
-
-    ui->comboBoxSubproject->clear();
-
-    {
-        auto subprojects = m_settings.subprojects();
-        for(const auto &subproject : subprojects)
-            ui->comboBoxSubproject->addItem(subproject);
-        if(subprojects.count())
-            ui->comboBoxSubproject->setCurrentText(QString());
     }
 
     ui->comboBoxWorkpackage->clear();

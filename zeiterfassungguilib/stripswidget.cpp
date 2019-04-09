@@ -327,7 +327,7 @@ bool StripsWidget::createStrips()
         auto timeAssignment = *timeAssignmentsIter++;
 
         appendTimeAssignmentStrip(timeAssignment.id, timeAssignment.timespan, buildProjectString(timeAssignment.project),
-                                  timeAssignment.subproject, timeAssignment.workpackage, timeAssignment.text);
+                                  timeAssignment.workpackage, timeAssignment.text);
 
         if(timeAssignment.timespan == QTime(0, 0))
         {
@@ -370,7 +370,7 @@ bool StripsWidget::createStrips()
                     timeAssignment = *timeAssignmentsIter++;
 
                     appendTimeAssignmentStrip(timeAssignment.id, timeAssignment.timespan, buildProjectString(timeAssignment.project),
-                                              timeAssignment.subproject, timeAssignment.workpackage, timeAssignment.text);
+                                              timeAssignment.workpackage, timeAssignment.text);
 
                     if(timeAssignment.timespan == QTime(0, 0))
                     {
@@ -426,7 +426,7 @@ bool StripsWidget::createStrips()
                     timeAssignment = *timeAssignmentsIter++;
 
                     appendTimeAssignmentStrip(timeAssignment.id, timeAssignment.timespan, buildProjectString(timeAssignment.project),
-                                              timeAssignment.subproject, timeAssignment.workpackage, timeAssignment.text);
+                                              timeAssignment.workpackage, timeAssignment.text);
 
                     if(timeAssignment.timespan == QTime(0, 0))
                     {
@@ -636,7 +636,7 @@ QWidget *StripsWidget::appendBookingEndStrip(int id, const QTime &time, const QT
     return widget;
 }
 
-QWidget *StripsWidget::appendTimeAssignmentStrip(int id, const QTime &duration, const QString &project, const QString &subproject, const QString &workpackage, const QString &text)
+QWidget *StripsWidget::appendTimeAssignmentStrip(int id, const QTime &duration, const QString &project, const QString &workpackage, const QString &text)
 {
     auto widget = m_mainWindow.stripFactory().createTimeAssignmentStrip(this).release();
 
@@ -654,11 +654,6 @@ QWidget *StripsWidget::appendTimeAssignmentStrip(int id, const QTime &duration, 
         labelId->setProperty("text", QString::number(id));
     else
         qWarning() << "no labelId found!";
-
-    if(auto labelSubproject = widget->findChild<QWidget*>(QStringLiteral("labelSubproject")))
-        labelSubproject->setProperty("text", subproject);
-    else
-        qWarning() << "no labelSubproject found!";
 
     if(auto labelWorkpackage = widget->findChild<QWidget*>(QStringLiteral("labelWorkpackage")))
         labelWorkpackage->setProperty("text", workpackage);

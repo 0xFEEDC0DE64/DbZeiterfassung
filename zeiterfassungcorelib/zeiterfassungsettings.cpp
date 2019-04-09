@@ -7,7 +7,6 @@ const QString ZeiterfassungSettings::m_url("url");
 const QString ZeiterfassungSettings::m_username("username");
 const QString ZeiterfassungSettings::m_password("password");
 const QString ZeiterfassungSettings::m_projects("projects");
-const QString ZeiterfassungSettings::m_subprojects("subprojects");
 const QString ZeiterfassungSettings::m_workpackages("workpackages");
 const QString ZeiterfassungSettings::m_texts("texte");
 const QString ZeiterfassungSettings::m_theme("theme");
@@ -178,37 +177,6 @@ bool ZeiterfassungSettings::setProjects(const QStringList &projects)
 bool ZeiterfassungSettings::prependProject(const QString &project)
 {
     return setProjects(prependItem(projects(), project));
-}
-
-QStringList ZeiterfassungSettings::subprojects() const
-{
-    return value(m_subprojects).toStringList();
-}
-
-bool ZeiterfassungSettings::setSubprojects(const QStringList &subprojects)
-{
-    if(this->subprojects() == subprojects)
-        return true;
-
-    if(subprojects.isEmpty())
-        remove(m_subprojects);
-    else
-        setValue(m_subprojects, subprojects);
-
-    sync();
-
-    const auto success = status() == QSettings::NoError;
-    if(success)
-        Q_EMIT subprojectsChanged(subprojects);
-    else
-        Q_EMIT saveErrorOccured();
-
-    return success;
-}
-
-bool ZeiterfassungSettings::prependSubproject(const QString &subproject)
-{
-    return setSubprojects(prependItem(subprojects(), subproject));
 }
 
 QStringList ZeiterfassungSettings::workpackages() const

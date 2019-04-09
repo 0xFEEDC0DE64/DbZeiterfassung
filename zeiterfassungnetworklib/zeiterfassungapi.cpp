@@ -164,8 +164,7 @@ std::unique_ptr<GetTimeAssignmentsReply> ZeiterfassungApi::doGetTimeAssignments(
 
 std::unique_ptr<CreateTimeAssignmentReply> ZeiterfassungApi::doCreateTimeAssignment(int userId, const QDate &date, const QTime &time,
                                                                                     const QTime &timespan, const QString &project,
-                                                                                    const QString &subproject, const QString &workpackage,
-                                                                                    const QString &text)
+                                                                                    const QString &workpackage, const QString &text)
 {
     QNetworkRequest request(QUrl(m_url.toString() % "json/azebooking"));
     request.setHeader(QNetworkRequest::ContentTypeHeader, QByteArrayLiteral("application/json"));
@@ -187,11 +186,6 @@ std::unique_ptr<CreateTimeAssignmentReply> ZeiterfassungApi::doCreateTimeAssignm
         }
         {
             QJsonObject obj;
-            obj[QStringLiteral("value")] = subproject;
-            koWertList << obj;
-        }
-        {
-            QJsonObject obj;
             obj[QStringLiteral("value")] = workpackage;
             koWertList << obj;
         }
@@ -205,8 +199,7 @@ std::unique_ptr<CreateTimeAssignmentReply> ZeiterfassungApi::doCreateTimeAssignm
 
 std::unique_ptr<UpdateTimeAssignmentReply> ZeiterfassungApi::doUpdateTimeAssignment(int timeAssignmentId, int userId, const QDate &date,
                                                                                     const QTime &time, const QTime &timespan, const QString &project,
-                                                                                    const QString &subproject, const QString &workpackage,
-                                                                                    const QString &text)
+                                                                                    const QString &workpackage, const QString &text)
 {
     QNetworkRequest request(QUrl(QStringLiteral("%0json/azebooking/%1").arg(m_url.toString()).arg(timeAssignmentId)));
     request.setHeader(QNetworkRequest::ContentTypeHeader, QByteArrayLiteral("application/json"));
@@ -229,11 +222,6 @@ std::unique_ptr<UpdateTimeAssignmentReply> ZeiterfassungApi::doUpdateTimeAssignm
         {
             QJsonObject obj;
             obj[QStringLiteral("value")] = project;
-            koWertList << obj;
-        }
-        {
-            QJsonObject obj;
-            obj[QStringLiteral("value")] = subproject;
             koWertList << obj;
         }
         {

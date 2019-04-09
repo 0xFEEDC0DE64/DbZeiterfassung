@@ -55,12 +55,10 @@ public:
     std::unique_ptr<GetTimeAssignmentsReply> doGetTimeAssignments(int userId, const QDate &start, const QDate &end);
     std::unique_ptr<CreateTimeAssignmentReply> doCreateTimeAssignment(int userId, const QDate &date, const QTime &time,
                                                                       const QTime &timespan, const QString &project,
-                                                                      const QString &subproject, const QString &workpackage,
-                                                                      const QString &text);
+                                                                      const QString &workpackage, const QString &text);
     std::unique_ptr<UpdateTimeAssignmentReply> doUpdateTimeAssignment(int timeAssignmentId, int userId, const QDate &date,
                                                                       const QTime &time, const QTime &timespan, const QString &project,
-                                                                      const QString &subproject, const QString &workpackage,
-                                                                      const QString &text);
+                                                                      const QString &workpackage, const QString &text);
     std::unique_ptr<DeleteTimeAssignmentReply> doDeleteTimeAssignment(int timeAssignmentId);
 
     std::unique_ptr<GetProjectsReply> doGetProjects(int userId, const QDate &date);

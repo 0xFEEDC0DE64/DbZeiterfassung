@@ -95,23 +95,7 @@
     </layout>
    </item>
    <item>
-    <layout class="QHBoxLayout" stretch="0,0,1">
-     <item>
-      <widget class="QLabel" name="labelSubproject">
-       <property name="minimumSize">
-        <size>
-         <width>80</width>
-         <height>0</height>
-        </size>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">background-color: rgba(0,0,0,30);</string>
-       </property>
-       <property name="text">
-        <string notr="true">Subproject</string>
-       </property>
-      </widget>
-     </item>
+    <layout class="QHBoxLayout" stretch="0,1">
      <item>
       <widget class="QLabel" name="labelWorkpackage">
        <property name="minimumSize">

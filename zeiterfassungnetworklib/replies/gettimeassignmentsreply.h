@@ -27,7 +27,6 @@ public:
         QTime timespan;
         QString text;
         QString project;
-        QString subproject;
         QString workpackage;
     };
 
