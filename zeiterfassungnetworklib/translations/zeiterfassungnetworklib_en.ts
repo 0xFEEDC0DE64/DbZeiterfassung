@@ -72,6 +72,29 @@
     </message>
 </context>
 <context>
+    <name>GetComboboxReply</name>
+    <message>
+        <source>Request error occured: %0</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Parsing JSON failed: %0</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>JSON document is not an object!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>JSON does not contain elements!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>elements is not an array!</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>GetDayinfoReply</name>
     <message>
         <source>Request error occured: %0</source>
@@ -98,29 +121,6 @@
     </message>
     <message>
         <source>JSON document is not an array!</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>GetProjectsReply</name>
-    <message>
-        <source>Request error occured: %0</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Parsing JSON failed: %0</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>JSON document is not an object!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>JSON does not contain elements!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>elements is not an array!</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -11,9 +11,9 @@ set(HEADERS
     replies/deletetimeassignmentreply.h
     replies/getabsencesreply.h
     replies/getbookingsreply.h
+    replies/getcomboboxreply.h
     replies/getdayinforeply.h
     replies/getpresencestatusreply.h
-    replies/getprojectsreply.h
     replies/getreportreply.h
     replies/gettimeassignmentsreply.h
     replies/getuserinforeply.h
@@ -32,9 +32,9 @@ set(SOURCES
     replies/deletetimeassignmentreply.cpp
     replies/getabsencesreply.cpp
     replies/getbookingsreply.cpp
+    replies/getcomboboxreply.cpp
     replies/getdayinforeply.cpp
     replies/getpresencestatusreply.cpp
-    replies/getprojectsreply.cpp
     replies/getreportreply.cpp
     replies/gettimeassignmentsreply.cpp
     replies/getuserinforeply.cpp

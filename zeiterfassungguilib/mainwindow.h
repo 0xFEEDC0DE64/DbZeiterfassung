@@ -8,7 +8,7 @@
 
 #include "zeiterfassungguilib_global.h"
 #include "replies/getuserinforeply.h"
-#include "replies/getprojectsreply.h"
+#include "replies/getcomboboxreply.h"
 #include "replies/getpresencestatusreply.h"
 
 class QMenu;
@@ -77,7 +77,7 @@ private:
     StripFactory &m_stripFactory;
     const QSet<ZeiterfassungPlugin*> &m_plugins;
 
-    std::unique_ptr<GetProjectsReply> m_getProjectsReply;
+    std::unique_ptr<GetComboboxReply> m_getProjectsReply;
 
     QMap<QString, QString> m_projects;
 

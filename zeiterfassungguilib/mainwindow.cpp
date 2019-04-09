@@ -22,7 +22,7 @@
 #include "stripfactory.h"
 #include "stripswidget.h"
 #include "dialogs/settingsdialog.h"
-#include "replies/getprojectsreply.h"
+#include "replies/getcomboboxreply.h"
 #include "replies/createbookingreply.h"
 #include "replies/createtimeassignmentreply.h"
 #include "replies/updatetimeassignmentreply.h"
@@ -185,7 +185,7 @@ void MainWindow::getProjectsFinished()
     {
         m_projects.clear();
 
-        for(const auto &project : m_getProjectsReply->projects())
+        for(const auto &project : m_getProjectsReply->items())
             m_projects.insert(project.value, project.label);
 
         updateComboboxes();

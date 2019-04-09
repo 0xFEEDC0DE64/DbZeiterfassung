@@ -20,7 +20,7 @@
 #include "replies/createtimeassignmentreply.h"
 #include "replies/updatetimeassignmentreply.h"
 #include "replies/deletetimeassignmentreply.h"
-#include "replies/getprojectsreply.h"
+#include "replies/getcomboboxreply.h"
 #include "replies/getreportreply.h"
 #include "replies/getpresencestatusreply.h"
 #include "replies/getabsencesreply.h"
@@ -247,15 +247,26 @@ std::unique_ptr<DeleteTimeAssignmentReply> ZeiterfassungApi::doDeleteTimeAssignm
     return std::make_unique<DeleteTimeAssignmentReply>(std::unique_ptr<QNetworkReply>(m_manager->deleteResource(request)), this);
 }
 
-std::unique_ptr<GetProjectsReply> ZeiterfassungApi::doGetProjects(int userId, const QDate &date)
+std::unique_ptr<GetComboboxReply> ZeiterfassungApi::doGetCostcentres(int userId, const QDate &date)
 {
-    QNetworkRequest request(QUrl(QStringLiteral("%0json/combobox?persnr=%1&date=%2&dqkey=KOST&kowert0=&kowert1=&kowert2=&term=")
+    QNetworkRequest request(QUrl(QStringLiteral("%0json/combobox?persnr=%1&date=%2&dqkey=KOST")
                                  .arg(m_url.toString())
                                  .arg(userId)
                                  .arg(formatDate(date))));
     request.setRawHeader(QByteArrayLiteral("sisAppName"), QByteArrayLiteral("bookingCalendar"));
 
-    return std::make_unique<GetProjectsReply>(std::unique_ptr<QNetworkReply>(m_manager->get(request)), this);
+    return std::make_unique<GetComboboxReply>(std::unique_ptr<QNetworkReply>(m_manager->get(request)), this);
+}
+
+std::unique_ptr<GetComboboxReply> ZeiterfassungApi::doGetProjects(int userId, const QDate &date)
+{
+    QNetworkRequest request(QUrl(QStringLiteral("%0json/combobox?persnr=%1&date=%2&dqkey=PROJEKT")
+                                 .arg(m_url.toString())
+                                 .arg(userId)
+                                 .arg(formatDate(date))));
+    request.setRawHeader(QByteArrayLiteral("sisAppName"), QByteArrayLiteral("bookingCalendar"));
+
+    return std::make_unique<GetComboboxReply>(std::unique_ptr<QNetworkReply>(m_manager->get(request)), this);
 }
 
 std::unique_ptr<GetReportReply> ZeiterfassungApi::doGetReport(int userId, const QDate &date)

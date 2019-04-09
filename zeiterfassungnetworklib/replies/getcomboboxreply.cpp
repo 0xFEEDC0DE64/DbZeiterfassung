@@ -1,4 +1,4 @@
-#include "getprojectsreply.h"
+#include "getcomboboxreply.h"
 
 #include <QJsonParseError>
 #include <QJsonDocument>
@@ -8,19 +8,19 @@
 
 #include "zeiterfassungapi.h"
 
-GetProjectsReply::GetProjectsReply(std::unique_ptr<QNetworkReply> &&reply, ZeiterfassungApi *zeiterfassung) :
+GetComboboxReply::GetComboboxReply(std::unique_ptr<QNetworkReply> &&reply, ZeiterfassungApi *zeiterfassung) :
     ZeiterfassungReply(zeiterfassung),
     m_reply(std::move(reply))
 {
-    connect(m_reply.get(), &QNetworkReply::finished, this, &GetProjectsReply::requestFinished);
+    connect(m_reply.get(), &QNetworkReply::finished, this, &GetComboboxReply::requestFinished);
 }
 
-const QVector<GetProjectsReply::Project> &GetProjectsReply::projects() const
+const QVector<GetComboboxReply::Item> &GetComboboxReply::items() const
 {
-    return m_projects;
+    return m_items;
 }
 
-void GetProjectsReply::requestFinished()
+void GetComboboxReply::requestFinished()
 {
     if(m_reply->error() != QNetworkReply::NoError)
     {
@@ -67,13 +67,13 @@ void GetProjectsReply::requestFinished()
         auto elementsArr = elements.toArray();
 
         setSuccess(true);
-        m_projects.clear();
-        m_projects.reserve(elementsArr.count());
+        m_items.clear();
+        m_items.reserve(elementsArr.count());
         for(const auto &val : elementsArr)
         {
             auto obj = val.toObject();
 
-            m_projects.append({
+            m_items.append({
                 obj.value(QStringLiteral("label")).toString(),
                 obj.value(QStringLiteral("value")).toString()
             });

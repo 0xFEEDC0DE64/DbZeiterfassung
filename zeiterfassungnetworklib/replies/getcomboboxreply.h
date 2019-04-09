@@ -10,25 +10,25 @@
 
 class ZeiterfassungApi;
 
-class ZEITERFASSUNGNETWORKLIB_EXPORT GetProjectsReply : public ZeiterfassungReply
+class ZEITERFASSUNGNETWORKLIB_EXPORT GetComboboxReply : public ZeiterfassungReply
 {
     Q_OBJECT
 
 public:
-    explicit GetProjectsReply(std::unique_ptr<QNetworkReply> &&reply, ZeiterfassungApi *zeiterfassung);
+    explicit GetComboboxReply(std::unique_ptr<QNetworkReply> &&reply, ZeiterfassungApi *zeiterfassung);
 
-    struct Project
+    struct Item
     {
         QString label;
         QString value;
     };
 
-    const QVector<Project> &projects() const;
+    const QVector<Item> &items() const;
 
 private Q_SLOTS:
     void requestFinished();
 
 private:
     std::unique_ptr<QNetworkReply> m_reply;
-    QVector<Project> m_projects;
+    QVector<Item> m_items;
 };

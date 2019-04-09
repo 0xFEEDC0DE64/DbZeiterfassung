@@ -23,7 +23,7 @@ class GetTimeAssignmentsReply;
 class CreateTimeAssignmentReply;
 class UpdateTimeAssignmentReply;
 class DeleteTimeAssignmentReply;
-class GetProjectsReply;
+class GetComboboxReply;
 class GetReportReply;
 class GetPresenceStatusReply;
 class GetAbsencesReply;
@@ -61,7 +61,8 @@ public:
                                                                       const QString &workpackage, const QString &text);
     std::unique_ptr<DeleteTimeAssignmentReply> doDeleteTimeAssignment(int timeAssignmentId);
 
-    std::unique_ptr<GetProjectsReply> doGetProjects(int userId, const QDate &date);
+    std::unique_ptr<GetComboboxReply> doGetCostcentres(int userId, const QDate &date);
+    std::unique_ptr<GetComboboxReply> doGetProjects(int userId, const QDate &date);
     std::unique_ptr<GetReportReply> doGetReport(int userId, const QDate &date);
     std::unique_ptr<GetPresenceStatusReply> doGetPresenceStatus();
     std::unique_ptr<GetAbsencesReply> doGetAbsences(int userId, const QDate &start, const QDate &end);
