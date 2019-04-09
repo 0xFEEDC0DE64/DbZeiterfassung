@@ -269,6 +269,18 @@ std::unique_ptr<GetComboboxReply> ZeiterfassungApi::doGetProjects(int userId, co
     return std::make_unique<GetComboboxReply>(std::unique_ptr<QNetworkReply>(m_manager->get(request)), this);
 }
 
+std::unique_ptr<GetComboboxReply> ZeiterfassungApi::doGetWorkpackages(int userId, const QDate &date, const QString &project)
+{
+    QNetworkRequest request(QUrl(QStringLiteral("%0json/combobox?persnr=%1&date=%2&dqkey=WORKPACKAGE&kowert0=%3")
+                                 .arg(m_url.toString())
+                                 .arg(userId)
+                                 .arg(formatDate(date))
+                                 .arg(project)));
+    request.setRawHeader(QByteArrayLiteral("sisAppName"), QByteArrayLiteral("bookingCalendar"));
+
+    return std::make_unique<GetComboboxReply>(std::unique_ptr<QNetworkReply>(m_manager->get(request)), this);
+}
+
 std::unique_ptr<GetReportReply> ZeiterfassungApi::doGetReport(int userId, const QDate &date)
 {
     QNetworkRequest request(QUrl(QStringLiteral("%0json/auswertung/month?persNr=%1&date=%2")

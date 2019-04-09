@@ -63,6 +63,8 @@ public:
 
     std::unique_ptr<GetComboboxReply> doGetCostcentres(int userId, const QDate &date);
     std::unique_ptr<GetComboboxReply> doGetProjects(int userId, const QDate &date);
+    std::unique_ptr<GetComboboxReply> doGetWorkpackages(int userId, const QDate &date, const QString &project);
+
     std::unique_ptr<GetReportReply> doGetReport(int userId, const QDate &date);
     std::unique_ptr<GetPresenceStatusReply> doGetPresenceStatus();
     std::unique_ptr<GetAbsencesReply> doGetAbsences(int userId, const QDate &start, const QDate &end);
