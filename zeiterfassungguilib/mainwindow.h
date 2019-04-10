@@ -46,8 +46,10 @@ public:
     QDate date() const;
     void setDate(const QDate &date);
 
-    const QMap<QString, QString> &projects() const;
     const std::array<StripsWidget*, 7> &stripsWidgets() const;
+
+    ProjectsModel &projectsModel();
+    const ProjectsModel &projectsModel() const;
 
 Q_SIGNALS:
     void dateChanged(const QDate &date);
@@ -58,7 +60,6 @@ protected:
     virtual void timerEvent(QTimerEvent *event) Q_DECL_OVERRIDE;
 
 private Q_SLOTS:
-    void getProjectsFinished();
     void pushButtonNowPressed();
     void pushButtonStartPressed();
     void pushButtonEndPressed();
@@ -77,10 +78,6 @@ private:
     const GetUserInfoReply::UserInfo &m_userInfo;
     StripFactory &m_stripFactory;
     const QSet<ZeiterfassungPlugin*> &m_plugins;
-
-    std::unique_ptr<GetComboboxReply> m_getProjectsReply;
-
-    QMap<QString, QString> m_projects;
 
     std::array<StripsWidget*, 7> m_stripsWidgets;
     StripsWidget *m_currentStripWidget;

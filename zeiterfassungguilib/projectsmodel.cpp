@@ -3,7 +3,6 @@
 #include <QFont>
 
 #include "zeiterfassungapi.h"
-#include "replies/getcomboboxreply.h"
 
 ProjectsModel::ProjectsModel(int userId, const QDate &date, ZeiterfassungApi &api, QObject *parent) :
     QAbstractListModel(parent),
@@ -48,7 +47,6 @@ QVariant ProjectsModel::data(const QModelIndex &index, int role) const
         switch (role)
         {
         case Qt::DisplayRole:
-        case Qt::EditRole:
             if (m_getProjectsReply->isFinished())
             {
                 Q_ASSERT(!m_getProjectsReply->success());
@@ -90,7 +88,6 @@ QVariant ProjectsModel::data(const QModelIndex &index, int role) const
                 switch (role)
                 {
                 case Qt::DisplayRole:
-                case Qt::EditRole:
                     if (project.getWorkpackagesReply->isFinished())
                     {
                         Q_ASSERT(!project.getWorkpackagesReply->success());
@@ -112,9 +109,11 @@ QVariant ProjectsModel::data(const QModelIndex &index, int role) const
                     switch (role)
                     {
                     case Qt::DisplayRole:
-                        return std::get<0>(workpackage) + " (" + std::get<1>(workpackage) + ')';
+                        return workpackage.label + " (" + workpackage.value + ')';
                     case Qt::EditRole:
-                        return std::get<0>(workpackage);
+                        return workpackage.label;
+                    case Qt::UserRole:
+                        return project.value;
                     default:
                         return {};
                     }
@@ -132,6 +131,15 @@ Qt::ItemFlags ProjectsModel::flags(const QModelIndex &index) const
     if (!isSelectable(index))
         flags &=~Qt::ItemIsSelectable;
     return flags;
+}
+
+QString ProjectsModel::getProjectLabel(const QString &projectId) const
+{
+    const auto iter = std::find_if(m_projects.begin(), m_projects.end(), [&projectId](const Project &project){ return project.value == projectId; });
+    if (iter == m_projects.end())
+        return {};
+
+    return iter->label;
 }
 
 void ProjectsModel::getProjectsFinished()
@@ -169,7 +177,7 @@ void ProjectsModel::getWorkspacesFinished(ProjectsModel::Project &project)
     }
 
     for (const auto &item : project.getWorkpackagesReply->items())
-        project.workpackages.push_back(std::make_pair(item.value, item.label));
+        project.workpackages.emplace_back(item.value, item.label);
 
     project.getWorkpackagesReply = nullptr;
 

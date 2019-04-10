@@ -76,10 +76,7 @@ MainWindow::MainWindow(ZeiterfassungSettings &settings, ZeiterfassungApi &erfass
 
     connect(ui->pushButtonNow, &QAbstractButton::pressed, this, &MainWindow::pushButtonNowPressed);
 
-    m_getProjectsReply = erfassung.doGetProjects(userInfo.userId, QDate::currentDate());
-    connect(m_getProjectsReply.get(), &ZeiterfassungReply::finished, this, &MainWindow::getProjectsFinished);
-
-    ui->comboBoxWorkpackage->lineEdit()->setPlaceholderText(tr("Workpackage"));
+    ui->comboBoxProject->setModel(&m_projectsModel);
     ui->comboBoxText->lineEdit()->setPlaceholderText(tr("Text"));
 
     updateComboboxes();
@@ -97,8 +94,6 @@ MainWindow::MainWindow(ZeiterfassungSettings &settings, ZeiterfassungApi &erfass
     }
 
     dateChangedSlot(ui->dateEditDate->date());
-
-    ui->comboBoxDebug->setModel(&m_projectsModel);
 }
 
 MainWindow::~MainWindow()
@@ -161,14 +156,19 @@ void MainWindow::setDate(const QDate &date)
     ui->dateEditDate->setDate(date);
 }
 
-const QMap<QString, QString> &MainWindow::projects() const
-{
-    return m_projects;
-}
-
 const std::array<StripsWidget*, 7> &MainWindow::stripsWidgets() const
 {
     return m_stripsWidgets;
+}
+
+ProjectsModel &MainWindow::projectsModel()
+{
+    return m_projectsModel;
+}
+
+const ProjectsModel &MainWindow::projectsModel() const
+{
+    return m_projectsModel;
 }
 
 void MainWindow::timerEvent(QTimerEvent *event)
@@ -182,24 +182,6 @@ void MainWindow::timerEvent(QTimerEvent *event)
         QMainWindow::timerEvent(event);
 }
 
-void MainWindow::getProjectsFinished()
-{
-    if(m_getProjectsReply->success())
-    {
-        m_projects.clear();
-
-        for(const auto &project : m_getProjectsReply->items())
-            m_projects.insert(project.value, project.label);
-
-        updateComboboxes();
-    }
-    else
-        QMessageBox::warning(this, tr("Could not load bookings!"),
-                             tr("Could not load bookings!") % "\n\n" % m_getProjectsReply->message());
-
-    m_getProjectsReply = Q_NULLPTR;
-}
-
 void MainWindow::pushButtonNowPressed()
 {
     ui->dateEditDate->setDate(QDate::currentDate());
@@ -208,6 +190,12 @@ void MainWindow::pushButtonNowPressed()
 
 void MainWindow::pushButtonStartPressed()
 {
+    if (ui->comboBoxProject->currentIndex() == -1)
+    {
+        QMessageBox::warning(this, tr("Could not create booking!"), tr("Could not create booking!") % "\n\n" % tr("Please select a project/workpackage!"));
+        return;
+    }
+
     if(m_timerId != -1)
     {
         killTimer(m_timerId);
@@ -261,8 +249,8 @@ void MainWindow::pushButtonStartPressed()
         {
             auto reply = m_erfassung.doCreateTimeAssignment(m_userInfo.userId, ui->dateEditDate->date(),
                                                             timeAssignmentTime, QTime(0, 0),
-                                                            ui->comboBoxProject->currentData().toString(),
-                                                            ui->comboBoxWorkpackage->currentText(),
+                                                            ui->comboBoxProject->currentData(Qt::UserRole).toString(),
+                                                            ui->comboBoxProject->currentData(Qt::EditRole).toString(),
                                                             ui->comboBoxText->currentText());
 
             reply->waitForFinished();
@@ -276,8 +264,7 @@ void MainWindow::pushButtonStartPressed()
         }
     }
 
-    m_settings.prependProject(ui->comboBoxProject->currentData().toString());
-    m_settings.prependWorkpackage(ui->comboBoxWorkpackage->currentText());
+    m_settings.setLastWorkpackageIndex(ui->comboBoxProject->currentIndex());
     m_settings.prependText(ui->comboBoxText->currentText());
 
     updateComboboxes();
@@ -392,7 +379,6 @@ void MainWindow::startEnabledChanged()
     ui->pushButtonNow->setEnabled(startEnabled || endEnabled);
 
     ui->comboBoxProject->setEnabled(startEnabled);
-    ui->comboBoxWorkpackage->setEnabled(startEnabled);
     ui->comboBoxText->setEnabled(startEnabled);
 
     ui->pushButtonStart->setEnabled(startEnabled);
@@ -413,40 +399,6 @@ void MainWindow::endEnabledChanged()
 
 void MainWindow::updateComboboxes()
 {
-    ui->comboBoxProject->clear();
-
-    {
-        auto preferedProjects = m_settings.projects();
-
-        for(const auto &preferedProject : preferedProjects)
-        {
-            if(!m_projects.contains(preferedProject))
-            {
-                qWarning() << "cannot find project" << preferedProject;
-                continue;
-            }
-
-            ui->comboBoxProject->addItem(tr("%0 (%1)").arg(m_projects.value(preferedProject)).arg(preferedProject), preferedProject);
-        }
-
-        if(preferedProjects.count())
-            ui->comboBoxProject->insertSeparator(ui->comboBoxProject->count());
-
-        for(auto iter = m_projects.constBegin(); iter != m_projects.constEnd(); iter++)
-        {
-            if(!preferedProjects.contains(iter.key()))
-                ui->comboBoxProject->addItem(tr("%0 (%1)").arg(iter.value()).arg(iter.key()), iter.key());
-        }
-    }
-
-    ui->comboBoxWorkpackage->clear();
-
-    {
-        auto workpackages = m_settings.workpackages();
-        for(const auto &workpackage : workpackages)
-            ui->comboBoxWorkpackage->addItem(workpackage);
-    }
-
     ui->comboBoxText->clear();
 
     {

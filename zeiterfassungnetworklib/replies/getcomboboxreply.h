@@ -1,9 +1,9 @@
 #pragma once
 
 #include <memory>
+#include <vector>
 
 #include <QNetworkReply>
-#include <QVector>
 
 #include "zeiterfassungnetworklib_global.h"
 #include "zeiterfassungreply.h"
@@ -19,16 +19,20 @@ public:
 
     struct Item
     {
+        Item(const QString &label, const QString &value) :
+            label(label), value(value)
+        {}
+
         QString label;
         QString value;
     };
 
-    const QVector<Item> &items() const;
+    const std::vector<Item> &items() const;
 
 private Q_SLOTS:
     void requestFinished();
 
 private:
     std::unique_ptr<QNetworkReply> m_reply;
-    QVector<Item> m_items;
+    std::vector<Item> m_items;
 };

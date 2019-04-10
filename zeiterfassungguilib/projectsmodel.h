@@ -6,24 +6,23 @@
 #include <memory>
 #include <vector>
 
+#include "replies/getcomboboxreply.h"
+
 class ZeiterfassungApi;
-class GetComboboxReply;
 
 class ProjectsModel : public QAbstractListModel
 {
     Q_OBJECT
 
-    struct Project {
+    struct Project : public GetComboboxReply::Item {
         Project(const QString &label, const QString &value, std::unique_ptr<GetComboboxReply> getWorkpackagesReply) :
-            label(label), value(value), getWorkpackagesReply(std::move(getWorkpackagesReply))
+            GetComboboxReply::Item(label, value),
+            getWorkpackagesReply(std::move(getWorkpackagesReply))
         {}
-
-        QString label;
-        QString value;
 
         std::unique_ptr<GetComboboxReply> getWorkpackagesReply;
 
-        std::vector<std::pair<QString, QString> > workpackages;
+        std::vector<GetComboboxReply::Item> workpackages;
     };
 
 public:
@@ -32,6 +31,8 @@ public:
     int rowCount(const QModelIndex &parent) const override;
     QVariant data(const QModelIndex &index, int role) const override;
     Qt::ItemFlags flags(const QModelIndex &index) const override;
+
+    QString getProjectLabel(const QString &projectId) const;
 
 private slots:
     void getProjectsFinished();

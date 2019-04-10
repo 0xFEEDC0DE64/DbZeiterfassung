@@ -82,8 +82,7 @@ private Q_SLOTS:
     void getTimeAssignmentsFinished();
 
 private:
-    void invalidateValues();    
-    QString buildProjectString(const QString &project) const;
+    void invalidateValues();
 
     QWidget *appendBookingStartStrip(int id, const QTime &time);
     QWidget *appendBookingEndStrip(int id, const QTime &time, const QTime &duration);

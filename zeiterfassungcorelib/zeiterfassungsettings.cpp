@@ -6,8 +6,7 @@ const QString ZeiterfassungSettings::m_language("language");
 const QString ZeiterfassungSettings::m_url("url");
 const QString ZeiterfassungSettings::m_username("username");
 const QString ZeiterfassungSettings::m_password("password");
-const QString ZeiterfassungSettings::m_projects("projects");
-const QString ZeiterfassungSettings::m_workpackages("workpackages");
+const QString ZeiterfassungSettings::m_lastWorkpackageIndex("lastWorkpackageIndex");
 const QString ZeiterfassungSettings::m_texts("texte");
 const QString ZeiterfassungSettings::m_theme("theme");
 const QLocale::Language ZeiterfassungSettings::m_defaultLanguage(QLocale::AnyLanguage);
@@ -148,66 +147,27 @@ bool ZeiterfassungSettings::setPassword(const QString &password)
     return success;
 }
 
-QStringList ZeiterfassungSettings::projects() const
+int ZeiterfassungSettings::lastWorkpackageIndex() const
 {
-    return value(m_projects).toStringList();
+    return value(m_lastWorkpackageIndex).toInt();
 }
 
-bool ZeiterfassungSettings::setProjects(const QStringList &projects)
+bool ZeiterfassungSettings::setLastWorkpackageIndex(int lastWorkpackageIndex)
 {
-    if(this->projects() == projects)
+    if (this->lastWorkpackageIndex() == lastWorkpackageIndex)
         return true;
 
-    if(projects.isEmpty())
-        remove(m_projects);
-    else
-        setValue(m_projects, projects);
+    setValue(m_lastWorkpackageIndex, lastWorkpackageIndex);
 
     sync();
 
     const auto success = status() == QSettings::NoError;
     if(success)
-        Q_EMIT projectsChanged(projects);
+        Q_EMIT lastWorkpackageIndexChanged(lastWorkpackageIndex);
     else
         Q_EMIT saveErrorOccured();
 
     return success;
-}
-
-bool ZeiterfassungSettings::prependProject(const QString &project)
-{
-    return setProjects(prependItem(projects(), project));
-}
-
-QStringList ZeiterfassungSettings::workpackages() const
-{
-    return value(m_workpackages).toStringList();
-}
-
-bool ZeiterfassungSettings::setWorkpackages(const QStringList &workpackages)
-{
-    if(this->workpackages() == workpackages)
-        return true;
-
-    if(workpackages.isEmpty())
-        remove(m_workpackages);
-    else
-        setValue(m_workpackages, workpackages);
-
-    sync();
-
-    const auto success = status() == QSettings::NoError;
-    if(success)
-        Q_EMIT workpackagesChanged(workpackages);
-    else
-        Q_EMIT saveErrorOccured();
-
-    return success;
-}
-
-bool ZeiterfassungSettings::prependWorkpackage(const QString &workpackage)
-{
-    return setWorkpackages(prependItem(workpackages(), workpackage));
 }
 
 QStringList ZeiterfassungSettings::texts() const

@@ -15,7 +15,7 @@ GetComboboxReply::GetComboboxReply(std::unique_ptr<QNetworkReply> &&reply, Zeite
     connect(m_reply.get(), &QNetworkReply::finished, this, &GetComboboxReply::requestFinished);
 }
 
-const QVector<GetComboboxReply::Item> &GetComboboxReply::items() const
+const std::vector<GetComboboxReply::Item> &GetComboboxReply::items() const
 {
     return m_items;
 }
@@ -69,14 +69,14 @@ void GetComboboxReply::requestFinished()
         setSuccess(true);
         m_items.clear();
         m_items.reserve(elementsArr.count());
-        for(const auto &val : elementsArr)
+        for(const auto val : elementsArr)
         {
             auto obj = val.toObject();
 
-            m_items.append({
+            m_items.emplace_back(
                 obj.value(QStringLiteral("label")).toString(),
                 obj.value(QStringLiteral("value")).toString()
-            });
+            );
         }
     }
 
