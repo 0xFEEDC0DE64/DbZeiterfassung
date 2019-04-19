@@ -154,7 +154,8 @@ void ProjectsModel::getProjectsFinished()
     for (const auto &item : m_getProjectsReply->items())
     {
         const auto index = m_projects.size();
-        auto &project = m_projects.emplace_back(item.label, item.value, m_api.doGetWorkpackages(m_userId, m_date, item.value));
+        m_projects.emplace_back(item.label, item.value, m_api.doGetWorkpackages(m_userId, m_date, item.value));
+        auto &project = m_projects.back();
         connect(project.getWorkpackagesReply.get(), &ZeiterfassungReply::finished, this, [this,index](){ getWorkspacesFinished(index); });
     }
     m_getProjectsReply = nullptr;

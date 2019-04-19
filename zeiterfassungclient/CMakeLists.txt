@@ -33,7 +33,7 @@ QT5_CREATE_TRANSLATION(TRANSLATIONS_C ${TRANSLATIONS} ${HEADERS} ${SOURCES} ${FO
 # TODO: add icon.ico for windows
 add_executable(zeiterfassungclient ${HEADERS} ${SOURCES} ${FORMS} ${RESOURCES} ${TRANSLATIONS_C})
 
-target_link_libraries(zeiterfassungclient Qt5::Core Qt5::Gui Qt5::Widgets Qt5::Network zeiterfassungcorelib zeiterfassungguilib zeiterfassungnetworklib)
+target_link_libraries(zeiterfassungclient stdc++ Qt5::Core Qt5::Gui Qt5::Widgets Qt5::Network zeiterfassungcorelib zeiterfassungguilib zeiterfassungnetworklib)
 
 add_dependencies(zeiterfassung zeiterfassungclient)
 
