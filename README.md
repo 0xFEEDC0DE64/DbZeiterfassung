@@ -13,8 +13,7 @@ git submodule update --init --recursive 3rdparty/Quazip DbSketch DbZeiterfassung
 cd ..
 mkdir build_DbSoftware
 cd build_DbSoftware
-qmake CONFIG+=ccache ../DbSoftware
-make -j$(nproc) sub-DbZeiterfassung
-make sub-DbZeiterfassung-install_subtargets
+cmake ../DbSoftware
+make -j$(nproc)
 ./bin/zeiterfassung
 ```
